@@ -1,8 +1,8 @@
 {
   "mappings": [
-    "/content/aem-boilerplate/:/"
+    "/content/eds-multifield-poc/:/"
   ],
   "includes": [
-    "/content/aem-boilerplate/"
+    "/content/eds-multifield-poc/"
   ]
 }
