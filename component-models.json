@@ -180,6 +180,421 @@
     ]
   },
   {
+    "id": "corp-carousel",
+    "fields": [
+      {
+        "component": "container",
+        "item": "slide",
+        "label": "Slides",
+        "name": "slides"
+      }
+    ]
+  },
+  {
+    "id": "slide",
+    "fields": [
+      {
+        "component": "aem-content",
+        "label": "Link",
+        "name": "link",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "label": "Image Mobile",
+        "name": "image-mobile",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "label": "Image Desktop",
+        "name": "image-desktop",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Alt Text Mobile",
+        "name": "alt-text-mobile",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Alt Text Desktop",
+        "name": "alt-text-desktop",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "corp-counter",
+    "fields": [
+      {
+        "component": "reference",
+        "label": "Background Image Mobile",
+        "name": "background-image-mobile",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "label": "Background Image Desktop",
+        "name": "background-image-desktop",
+        "valueType": "string"
+      },
+      {
+        "component": "container",
+        "item": "counter",
+        "label": "Counters",
+        "name": "counters"
+      },
+      {
+        "component": "container",
+        "item": "button",
+        "label": "Buttons",
+        "name": "buttons"
+      }
+    ]
+  },
+  {
+    "id": "counter",
+    "fields": [
+      {
+        "component": "reference",
+        "label": "Background Image",
+        "name": "bg-image",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Value",
+        "name": "value",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Label",
+        "name": "label",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "button",
+    "fields": [
+      {
+        "component": "text",
+        "label": "Button Text",
+        "name": "text",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "label": "Href",
+        "name": "href",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "corp-footer",
+    "fields": [
+      {
+        "component": "container",
+        "item": "link-column",
+        "label": "Link Columns",
+        "name": "link-columns"
+      },
+      {
+        "component": "container",
+        "item": "contact",
+        "label": "Contacts",
+        "name": "contacts"
+      },
+      {
+        "component": "container",
+        "item": "footer-content",
+        "label": "Footer Content",
+        "name": "footer-content"
+      }
+    ]
+  },
+  {
+    "id": "link-column",
+    "fields": [
+      {
+        "component": "text",
+        "label": "Heading",
+        "name": "heading",
+        "valueType": "string"
+      },
+      {
+        "component": "container",
+        "item": "link",
+        "label": "Links",
+        "name": "links"
+      }
+    ]
+  },
+  {
+    "id": "link",
+    "fields": [
+      {
+        "component": "aem-content",
+        "label": "URL",
+        "name": "url",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Text",
+        "name": "text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "contact",
+    "fields": [
+      {
+        "component": "text",
+        "label": "Title",
+        "name": "title",
+        "valueType": "string"
+      },
+      {
+        "component": "container",
+        "item": "contact-icon",
+        "label": "Contact Icons",
+        "name": "contact-icons"
+      }
+    ]
+  },
+  {
+    "id": "contact-icon",
+    "fields": [
+      {
+        "component": "aem-content",
+        "label": "URL",
+        "name": "url",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "label": "Icon",
+        "name": "icon",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Alt Text",
+        "name": "alt",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "footer-content",
+    "fields": [
+      {
+        "component": "richtext",
+        "label": "Content",
+        "name": "content",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "corp-header"
+  },
+  {
+    "id": "link-column",
+    "fields": [
+      {
+        "component": "container",
+        "item": "link",
+        "label": "Links",
+        "name": "links"
+      }
+    ]
+  },
+  {
+    "id": "link",
+    "fields": [
+      {
+        "component": "aem-content",
+        "label": "Href",
+        "name": "href",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Text",
+        "name": "text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "corp-our-values",
+    "fields": [
+      {
+        "component": "reference",
+        "label": "Background Image",
+        "name": "background-image",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Heading 1",
+        "name": "heading-1",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Heading 2",
+        "name": "heading-2",
+        "valueType": "string"
+      },
+      {
+        "component": "container",
+        "item": "value",
+        "label": "Values",
+        "name": "values"
+      },
+      {
+        "component": "container",
+        "item": "button",
+        "label": "Buttons",
+        "name": "buttons"
+      }
+    ]
+  },
+  {
+    "id": "value",
+    "fields": [
+      {
+        "component": "reference",
+        "label": "Image",
+        "name": "image",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "button",
+    "fields": [
+      {
+        "component": "aem-content",
+        "label": "Link",
+        "name": "link",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Text",
+        "name": "text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "corp-slider",
+    "fields": [
+      {
+        "component": "richtext",
+        "label": "Heading",
+        "name": "heading",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Slider Title",
+        "name": "slider-title",
+        "valueType": "string"
+      },
+      {
+        "component": "container",
+        "item": "car",
+        "label": "Cars",
+        "name": "cars"
+      }
+    ]
+  },
+  {
+    "id": "car",
+    "fields": [
+      {
+        "component": "reference",
+        "label": "Image",
+        "name": "image",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Alt Text",
+        "name": "alt",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Title",
+        "name": "title",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "label": "Link",
+        "name": "link",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "corporate-business-card",
+    "fields": [
+      {
+        "component": "text",
+        "label": "Title",
+        "name": "title",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "business-card-item",
+    "fields": [
+      {
+        "component": "reference",
+        "label": "Video Poster",
+        "name": "video-poster",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "label": "Logo",
+        "name": "logo",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Heading",
+        "name": "heading",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Subtitle",
+        "name": "subtitle",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "label": "CTA Link",
+        "name": "cta-link",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "fragment",
     "fields": [
       {
@@ -211,6 +626,46 @@
         "name": "text",
         "value": "",
         "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "highlights",
+    "fields": [
+      {
+        "component": "container",
+        "item": "highlight-card",
+        "label": "Cards",
+        "name": "cards"
+      }
+    ]
+  },
+  {
+    "id": "highlight-card",
+    "fields": [
+      {
+        "component": "richtext",
+        "label": "Top Description",
+        "name": "top-description",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "label": "Link",
+        "name": "link",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Title",
+        "name": "title",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "label": "Bottom Description",
+        "name": "bottom-description",
         "valueType": "string"
       }
     ]

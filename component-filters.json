@@ -15,7 +15,15 @@
       "hero",
       "cards",
       "columns",
-      "fragment"
+      "fragment",
+      "corp-header",
+      "corp-carousel",
+      "corporate-business-card",
+      "highlights",
+      "corp-slider",
+      "corp-our-values",
+      "corp-counter",
+      "corp-footer"
     ]
   },
   {
@@ -37,6 +45,59 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "corp-carousel",
+    "components": [
+      "slide"
+    ]
+  },
+  {
+    "id": "corp-counter",
+    "components": [
+      "counter",
+      "button"
+    ]
+  },
+  {
+    "id": "corp-footer",
+    "components": [
+      "link-column",
+      "contact",
+      "footer-content"
+    ]
+  },
+  {
+    "id": "corp-header",
+    "components": [
+      "link-column",
+      "link"
+    ]
+  },
+  {
+    "id": "corp-our-values",
+    "components": [
+      "value",
+      "button"
+    ]
+  },
+  {
+    "id": "corp-slider",
+    "components": [
+      "car"
+    ]
+  },
+  {
+    "id": "corporate-business-card",
+    "components": [
+      "business-card-item"
+    ]
+  },
+  {
+    "id": "highlights",
+    "components": [
+      "highlight-card"
     ]
   }
 ]

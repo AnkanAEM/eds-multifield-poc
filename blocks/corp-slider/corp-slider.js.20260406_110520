@@ -1,0 +1,194 @@
+import { createOptimizedPicture } from '../../scripts/aem.js';
+import { moveInstrumentation } from '../../scripts/scripts.js';
+
+export default function decorate(block) {
+  // The block structure is:
+  // [0] headingRow
+  // [1] titleRow
+  // [2] sliderItemsContainerRow (this row itself is a container, its content is not used directly)
+  // [3...] itemRows (these are the actual slider items)
+  const [headingRow, titleRow, , ...itemRows] = [...block.children];
+
+  const rangeComponent = document.createElement('div');
+  rangeComponent.classList.add('range-component');
+
+  // Heading
+  if (headingRow) {
+    const headerRow = document.createElement('div');
+    headerRow.classList.add('row');
+    const headerCol = document.createElement('div');
+    // Note: 'col-md12' is present twice in the original HTML, so it's kept as is.
+    headerCol.classList.add('col-md12', 'col-sm-12', 'col-md-12', 'gallery-header');
+    moveInstrumentation(headingRow.firstElementChild, headerCol);
+    while (headingRow.firstElementChild.firstChild) headerCol.append(headingRow.firstElementChild.firstChild);
+    headerRow.append(headerCol);
+    rangeComponent.append(headerRow);
+  }
+
+  // Title
+  if (titleRow) {
+    const sliderTitle = document.createElement('div');
+    sliderTitle.classList.add('slider-title');
+    const h4 = document.createElement('h4');
+    const titleText = titleRow.firstElementChild.textContent.trim();
+    h4.id = titleText.toLowerCase(); // Assuming the ID should be lowercase of the title
+    moveInstrumentation(titleRow.firstElementChild, h4);
+    h4.textContent = titleText;
+    sliderTitle.append(h4);
+    rangeComponent.append(sliderTitle);
+  }
+
+  // Create carousel for desktop
+  const desktopCarousel = document.createElement('div');
+  desktopCarousel.id = 'range-slider-arena-desktop';
+  desktopCarousel.classList.add('carousel', 'slide', 'd-none', 'd-sm-block');
+  desktopCarousel.setAttribute('data-ride', 'carousel');
+
+  const desktopCarouselInner = document.createElement('div');
+  desktopCarouselInner.classList.add('carousel-inner');
+  desktopCarousel.append(desktopCarouselInner);
+
+  // Create carousel for mobile
+  const mobileCarousel = document.createElement('div');
+  mobileCarousel.id = 'range-slider-arena-mobile';
+  mobileCarousel.classList.add('carousel', 'slide', 'd-sm-none');
+  mobileCarousel.setAttribute('data-ride', 'carousel');
+
+  const mobileCarouselInner = document.createElement('div');
+  mobileCarouselInner.classList.add('carousel-inner');
+  mobileCarousel.append(mobileCarouselInner);
+
+  const itemsPerDesktopSlide = 4;
+  const itemsPerMobileSlide = 2;
+
+  let desktopSlideIndex = 0;
+  let mobileSlideIndex = 0;
+
+  let currentDesktopSlide = null;
+  let currentMobileSlide = null;
+
+  itemRows.forEach((row, index) => {
+    // Each item row has 4 cells: image, alt, title, link
+    const [imageCell, altCell, titleCell, linkCell] = [...row.children];
+
+    // Desktop slide handling
+    if (index % itemsPerDesktopSlide === 0) {
+      currentDesktopSlide = document.createElement('div');
+      currentDesktopSlide.classList.add('carousel-item');
+      if (desktopSlideIndex === 0) {
+        currentDesktopSlide.classList.add('active');
+      }
+      const desktopSlideRow = document.createElement('div');
+      desktopSlideRow.classList.add('row');
+      currentDesktopSlide.append(desktopSlideRow);
+      desktopCarouselInner.append(currentDesktopSlide);
+      desktopSlideIndex += 1;
+    }
+
+    // Mobile slide handling
+    if (index % itemsPerMobileSlide === 0) {
+      currentMobileSlide = document.createElement('div');
+      currentMobileSlide.classList.add('carousel-item');
+      if (mobileSlideIndex === 0) {
+        currentMobileSlide.classList.add('active');
+      }
+      const mobileSlideRow = document.createElement('div');
+      mobileSlideRow.classList.add('row');
+      currentMobileSlide.append(mobileSlideRow);
+      mobileCarouselInner.append(currentMobileSlide);
+      mobileSlideIndex += 1;
+    }
+
+    // Create item content
+    const imageLink = linkCell.querySelector('a');
+    const imageUrl = imageLink ? imageLink.href : '#';
+
+    const itemAnchor = document.createElement('a');
+    itemAnchor.classList.add('image-area');
+    itemAnchor.href = imageUrl;
+    moveInstrumentation(linkCell, itemAnchor); // Move instrumentation from link cell
+
+    const imageContainer = document.createElement('div');
+    imageContainer.classList.add('image-container');
+    imageContainer.setAttribute('target', '_self'); // From original HTML
+    itemAnchor.append(imageContainer);
+
+    const picture = imageCell.querySelector('picture');
+    if (picture) {
+      const img = picture.querySelector('img');
+      if (img) {
+        // The original HTML uses img-fluid class on the img tag directly.
+        // createOptimizedPicture returns a picture element, so we need to apply img-fluid to the img inside.
+        const optimizedPic = createOptimizedPicture(img.src, altCell.textContent.trim(), false, [{ width: '750' }]);
+        const optimizedImg = optimizedPic.querySelector('img');
+        if (optimizedImg) {
+          optimizedImg.classList.add('img-fluid'); // Add img-fluid class as per original HTML
+          moveInstrumentation(img, optimizedImg);
+        }
+        imageContainer.append(optimizedPic);
+      }
+    }
+
+    const h6 = document.createElement('h6');
+    h6.classList.add('img-title');
+    moveInstrumentation(titleCell, h6); // Move instrumentation from title cell
+    h6.textContent = titleCell.textContent.trim();
+    itemAnchor.append(h6);
+
+    // Append to desktop slide
+    if (currentDesktopSlide) {
+      const desktopCol = document.createElement('div');
+      desktopCol.classList.add('col-6', 'col-sm-6', 'col-lg-3');
+      desktopCol.append(itemAnchor.cloneNode(true)); // Clone for desktop
+      currentDesktopSlide.querySelector('.row').append(desktopCol);
+    }
+
+    // Append to mobile slide
+    if (currentMobileSlide) {
+      const mobileCol = document.createElement('div');
+      mobileCol.classList.add('col-6', 'col-sm-6', 'col-lg-3');
+      mobileCol.append(itemAnchor); // Original for mobile
+      currentMobileSlide.querySelector('.row').append(mobileCol);
+    }
+  });
+
+  // Add carousel controls for desktop
+  const desktopPrevControl = document.createElement('a');
+  desktopPrevControl.classList.add('carousel-control-prev');
+  desktopPrevControl.href = `#${desktopCarousel.id}`;
+  desktopPrevControl.setAttribute('role', 'button');
+  desktopPrevControl.setAttribute('data-slide', 'prev'); // Add data-slide attribute for Bootstrap carousel functionality
+  desktopPrevControl.innerHTML = '<span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">previous</span>';
+  desktopCarousel.append(desktopPrevControl);
+
+  const desktopNextControl = document.createElement('a');
+  desktopNextControl.classList.add('carousel-control-next');
+  desktopNextControl.href = `#${desktopCarousel.id}`;
+  desktopNextControl.setAttribute('role', 'button');
+  desktopNextControl.setAttribute('data-slide', 'next'); // Add data-slide attribute for Bootstrap carousel functionality
+  desktopNextControl.innerHTML = '<span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">next</span>';
+  desktopCarousel.append(desktopNextControl);
+
+  // Add carousel controls for mobile
+  const mobilePrevControl = document.createElement('a');
+  mobilePrevControl.classList.add('carousel-control-prev');
+  mobilePrevControl.href = `#${mobileCarousel.id}`;
+  mobilePrevControl.setAttribute('role', 'button');
+  mobilePrevControl.setAttribute('data-slide', 'prev'); // Add data-slide attribute for Bootstrap carousel functionality
+  mobilePrevControl.innerHTML = '<span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">previous</span>';
+  mobileCarousel.append(mobilePrevControl);
+
+  const mobileNextControl = document.createElement('a');
+  mobileNextControl.classList.add('carousel-control-next');
+  mobileNextControl.href = `#${mobileCarousel.id}`;
+  mobileNextControl.setAttribute('role', 'button');
+  mobileNextControl.setAttribute('data-slide', 'next'); // Add data-slide attribute for Bootstrap carousel functionality
+  mobileNextControl.innerHTML = '<span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">next</span>';
+  mobileCarousel.append(mobileNextControl);
+
+  rangeComponent.append(desktopCarousel);
+  rangeComponent.append(mobileCarousel);
+
+  block.textContent = '';
+  block.append(rangeComponent);
+}
