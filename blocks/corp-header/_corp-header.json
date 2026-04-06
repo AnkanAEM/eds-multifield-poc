@@ -49,9 +49,6 @@
   ],
   "models": [
     {
-      "id": "corp-header"
-    },
-    {
       "id": "link-column",
       "fields": [
         {
