@@ -15,12 +15,33 @@
       "hero",
       "cards",
       "columns",
-      "fragment"
+      "fragment",
+      "header-navigation",
+      "hero-full-width",
+      "text-and-media",
+      "card-list",
+      "media",
+      "scarp",
+      "cmp-stats-by-the-number",
+      "footer"
+    ]
+  },
+  {
+    "id": "card-list",
+    "components": [
+      "card"
     ]
   },
   {
     "id": "cards",
     "components": [
+      "card"
+    ]
+  },
+  {
+    "id": "cmp-stats-by-the-number",
+    "components": [
+      "tab",
       "card"
     ]
   },
@@ -38,5 +59,33 @@
       "button",
       "title"
     ]
+  },
+  {
+    "id": "footer",
+    "components": [
+      "social-link",
+      "navigation-link",
+      "language-link",
+      "policy-link"
+    ]
+  },
+  {
+    "id": "header-navigation",
+    "components": [
+      "nav-item",
+      "language-option"
+    ]
+  },
+  {
+    "id": "hero-full-width"
+  },
+  {
+    "id": "media"
+  },
+  {
+    "id": "scarp"
+  },
+  {
+    "id": "text-and-media"
   }
 ]

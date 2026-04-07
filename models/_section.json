@@ -50,7 +50,15 @@
         "hero",
         "cards",
         "columns",
-        "fragment"
+        "fragment",
+        "header-navigation",
+        "hero-full-width",
+        "text-and-media",
+        "card-list",
+        "media",
+        "scarp",
+        "cmp-stats-by-the-number",
+        "footer"
       ]
     }
   ]
