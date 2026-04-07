@@ -1,0 +1,73 @@
+{
+  "definitions": [
+    {
+      "title": "Hp-Main-Slider",
+      "id": "hp-main-slider",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "filter": "hp-main-slider",
+              "model": "hp-main-slider",
+              "name": "Hp-Main-Slider"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Hp-Main-Slider-List",
+      "id": "hp-main-slider-list",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "model": "hp-main-slider-list",
+              "name": "Hp-Main-Slider-List"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "hp-main-slider",
+      "fields": [
+        {
+          "component": "container",
+          "item": "hp-main-slider-list",
+          "label": "Slides",
+          "name": "slides"
+        }
+      ]
+    },
+    {
+      "id": "hp-main-slider-list",
+      "fields": [
+        {
+          "component": "reference",
+          "label": "Image",
+          "name": "image",
+          "valueType": "string"
+        },
+        {
+          "component": "aem-content",
+          "label": "Link",
+          "name": "link",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "hp-main-slider",
+      "components": [
+        "hp-main-slider-list"
+      ]
+    }
+  ]
+}

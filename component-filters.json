@@ -15,7 +15,16 @@
       "hero",
       "cards",
       "columns",
-      "fragment"
+      "fragment",
+      "yoast-schema-graph",
+      "header-cont",
+      "chat",
+      "hp-main-slider",
+      "hp-product-main-container",
+      "video-list",
+      "modal",
+      "footercont",
+      "footer-form-popup"
     ]
   },
   {
@@ -23,6 +32,9 @@
     "components": [
       "card"
     ]
+  },
+  {
+    "id": "chat"
   },
   {
     "id": "columns",
@@ -38,5 +50,47 @@
       "button",
       "title"
     ]
+  },
+  {
+    "id": "footer-form-popup"
+  },
+  {
+    "id": "footercont",
+    "components": [
+      "footerlink",
+      "footerimage",
+      "footersocial"
+    ]
+  },
+  {
+    "id": "header-cont",
+    "components": [
+      "menu-item"
+    ]
+  },
+  {
+    "id": "hp-main-slider",
+    "components": [
+      "hp-main-slider-list"
+    ]
+  },
+  {
+    "id": "hp-product-main-container",
+    "components": [
+      "hp-product-container",
+      "video-list"
+    ]
+  },
+  {
+    "id": "modal"
+  },
+  {
+    "id": "video-list",
+    "components": [
+      "video"
+    ]
+  },
+  {
+    "id": "yoast-schema-graph"
   }
 ]

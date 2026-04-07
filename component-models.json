@@ -161,6 +161,23 @@
     ]
   },
   {
+    "id": "chat",
+    "fields": [
+      {
+        "component": "reference",
+        "label": "Chatbot Image",
+        "name": "chatbot-image",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Chatbot Bar Text",
+        "name": "chatbot-bar-text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "columns",
     "fields": [
       {
@@ -180,12 +197,217 @@
     ]
   },
   {
+    "id": "footer-form-popup",
+    "fields": [
+      {
+        "component": "text",
+        "label": "Name",
+        "name": "name",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Email",
+        "name": "email",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Phone",
+        "name": "phone",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "label": "State",
+        "name": "state",
+        "options": [
+          "Andhra Pradesh",
+          "Arunachal Pradesh",
+          "Assam",
+          "Bihar",
+          "Chhattisgarh",
+          "Goa",
+          "Gujarat",
+          "Haryana",
+          "Himachal Pradesh",
+          "Jharkhand",
+          "Karnataka",
+          "Kerala",
+          "Madhya Pradesh",
+          "Maharashtra",
+          "Manipur",
+          "Meghalaya",
+          "Mizoram",
+          "Nagaland",
+          "Odisha",
+          "Punjab",
+          "Rajasthan",
+          "Sikkim",
+          "Tamil Nadu",
+          "Telangana",
+          "Tripura",
+          "Uttar Pradesh",
+          "Uttarakhand",
+          "West Bengal",
+          "Andaman and Nicobar Islands",
+          "Chandigarh",
+          "Dadra and Nagar Haveli",
+          "Daman and Diu",
+          "Delhi",
+          "Lakshadweep",
+          "Puducherry"
+        ],
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "label": "City",
+        "name": "city",
+        "options": [],
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Referer Url",
+        "name": "referer-url",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "label": "Message",
+        "name": "message",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "footercont",
+    "fields": [
+      {
+        "component": "container",
+        "item": "footerlink",
+        "label": "Footer Links",
+        "name": "footerlinks"
+      },
+      {
+        "component": "container",
+        "item": "footerimage",
+        "label": "Footer Images",
+        "name": "footerimages"
+      },
+      {
+        "component": "container",
+        "item": "footersocial",
+        "label": "Footer Social Links",
+        "name": "footersocials"
+      },
+      {
+        "component": "richtext",
+        "label": "Copyright",
+        "name": "copyright",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "footerlink",
+    "fields": [
+      {
+        "component": "text",
+        "label": "Label",
+        "name": "label",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "label": "URL",
+        "name": "url",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "footerimage",
+    "fields": [
+      {
+        "component": "reference",
+        "label": "Image",
+        "name": "image",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "footersocial",
+    "fields": [
+      {
+        "component": "aem-content",
+        "label": "Social URL",
+        "name": "url",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "label": "Icon/Image",
+        "name": "icon",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "fragment",
     "fields": [
       {
         "component": "aem-content",
         "name": "reference",
         "label": "Reference"
+      }
+    ]
+  },
+  {
+    "id": "header-cont",
+    "fields": [
+      {
+        "component": "reference",
+        "label": "Logo",
+        "name": "logo",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "label": "Logo Link",
+        "name": "logo-link",
+        "valueType": "string"
+      },
+      {
+        "component": "container",
+        "item": "menu-item",
+        "label": "Menu Items",
+        "name": "menu-items"
+      }
+    ]
+  },
+  {
+    "id": "menu-item",
+    "fields": [
+      {
+        "component": "aem-content",
+        "label": "Link",
+        "name": "link",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Text",
+        "name": "text",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "label": "Image",
+        "name": "image",
+        "valueType": "string"
       }
     ]
   },
@@ -214,5 +436,148 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "hp-main-slider",
+    "fields": [
+      {
+        "component": "container",
+        "item": "hp-main-slider-list",
+        "label": "Slides",
+        "name": "slides"
+      }
+    ]
+  },
+  {
+    "id": "hp-main-slider-list",
+    "fields": [
+      {
+        "component": "reference",
+        "label": "Image",
+        "name": "image",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "label": "Link",
+        "name": "link",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "hp-product-main-container"
+  },
+  {
+    "id": "hp-product-container",
+    "fields": [
+      {
+        "component": "richtext",
+        "label": "Heading",
+        "name": "heading",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "label": "Subheading",
+        "name": "subheading",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "label": "Button Link",
+        "name": "button-link",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "label": "Main Image",
+        "name": "main-image",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "video-list",
+    "fields": [
+      {
+        "component": "reference",
+        "label": "Thumbnail",
+        "name": "thumbnail",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Video URL",
+        "name": "video-url",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "label": "Description",
+        "name": "description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "modal",
+    "fields": [
+      {
+        "component": "text",
+        "label": "Modal ID",
+        "name": "modal-id",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "label": "Video URL",
+        "name": "video",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "video-list",
+    "fields": [
+      {
+        "component": "text",
+        "label": "Heading",
+        "name": "heading",
+        "valueType": "string"
+      },
+      {
+        "component": "container",
+        "item": "video",
+        "label": "Videos",
+        "name": "videos"
+      }
+    ]
+  },
+  {
+    "id": "video",
+    "fields": [
+      {
+        "component": "reference",
+        "label": "Thumbnail",
+        "name": "thumbnail",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "label": "Video URL",
+        "name": "video-url",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "label": "Description",
+        "name": "description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "yoast-schema-graph"
   }
 ]

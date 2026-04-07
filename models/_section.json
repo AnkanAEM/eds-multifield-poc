@@ -50,7 +50,16 @@
         "hero",
         "cards",
         "columns",
-        "fragment"
+        "fragment",
+        "yoast-schema-graph",
+        "header-cont",
+        "chat",
+        "hp-main-slider",
+        "hp-product-main-container",
+        "video-list",
+        "modal",
+        "footercont",
+        "footer-form-popup"
       ]
     }
   ]

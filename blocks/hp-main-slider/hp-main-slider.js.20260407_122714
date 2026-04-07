@@ -1,0 +1,134 @@
+import { createOptimizedPicture } from '../../scripts/aem.js';
+import { moveInstrumentation } from '../../scripts/scripts.js';
+
+export default function decorate(block) {
+  const slickList = document.createElement('div');
+  slickList.classList.add('slick-list', 'draggable');
+
+  const slickTrack = document.createElement('div');
+  slickTrack.classList.add('slick-track');
+  slickTrack.setAttribute('role', 'listbox');
+
+  const slides = [...block.children];
+  slides.forEach((row, index) => {
+    const slideDiv = document.createElement('div');
+    moveInstrumentation(row, slideDiv);
+    slideDiv.classList.add('hp-main-slider-list', 'slick-slide');
+    slideDiv.setAttribute('aria-hidden', 'true');
+    slideDiv.setAttribute('tabindex', '-1');
+    slideDiv.setAttribute('role', 'option');
+    slideDiv.setAttribute('data-slick-index', index); // Add data-slick-index for potential future use
+
+    const cells = [...row.children];
+    const imageCell = cells.find(cell => cell.querySelector('picture'));
+    const linkCell = cells.find(cell => cell.querySelector('a'));
+
+    let linkElement = null;
+    let pictureElement = null;
+
+    if (imageCell) {
+      pictureElement = imageCell.querySelector('picture');
+    }
+    if (linkCell) {
+      linkElement = linkCell.querySelector('a');
+    }
+
+    if (linkElement && pictureElement) {
+      const newLink = document.createElement('a');
+      newLink.href = linkElement.href;
+      if (linkElement.target) newLink.target = linkElement.target;
+      moveInstrumentation(linkElement, newLink);
+      newLink.append(pictureElement);
+      slideDiv.append(newLink);
+    } else if (pictureElement) {
+      slideDiv.append(pictureElement);
+    }
+
+    slickTrack.append(slideDiv);
+  });
+
+  slickList.append(slickTrack);
+  block.textContent = '';
+  block.classList.add('slick-initialized', 'slick-slider');
+  block.setAttribute('role', 'toolbar');
+  block.append(slickList);
+
+  block.querySelectorAll('picture > img').forEach((img) => {
+    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '1920' }]);
+    moveInstrumentation(img, optimizedPic.querySelector('img'));
+    img.closest('picture').replaceWith(optimizedPic);
+    optimizedPic.querySelector('img').classList.add('img-responsive', 'w-100');
+  });
+
+  // Add slick-dots for navigation
+  const slickDots = document.createElement('ul');
+  slickDots.classList.add('slick-dots');
+  slickDots.setAttribute('role', 'tablist');
+  slides.forEach((_, index) => {
+    const dotLi = document.createElement('li');
+    dotLi.setAttribute('aria-hidden', 'true');
+    dotLi.setAttribute('role', 'presentation');
+    dotLi.setAttribute('aria-selected', 'false');
+    dotLi.setAttribute('aria-controls', `navigation0${index}`); // Assuming 0-indexed navigation
+    dotLi.setAttribute('id', `slick-slide0${index}`);
+
+    const dotButton = document.createElement('button');
+    dotButton.setAttribute('type', 'button');
+    dotButton.setAttribute('data-role', 'none');
+    dotButton.setAttribute('role', 'button');
+    dotButton.setAttribute('aria-required', 'false');
+    dotButton.setAttribute('tabindex', '0');
+    dotButton.textContent = index + 1;
+
+    dotLi.append(dotButton);
+    slickDots.append(dotLi);
+
+    // Add event listener for dot navigation
+    dotButton.addEventListener('click', () => {
+      // Remove active classes from current slide and dot
+      block.querySelector('.slick-slide.slick-current')?.classList.remove('slick-current', 'slick-active');
+      block.querySelector('.slick-dots .slick-active')?.classList.remove('slick-active');
+      block.querySelector('.slick-dots .slick-active')?.setAttribute('aria-hidden', 'true');
+      block.querySelector('.slick-dots .slick-active')?.setAttribute('aria-selected', 'false');
+
+      // Add active classes to the clicked slide and dot
+      const targetSlide = block.querySelector(`.slick-slide[data-slick-index="${index}"]`);
+      if (targetSlide) {
+        targetSlide.classList.add('slick-current', 'slick-active');
+        targetSlide.setAttribute('aria-hidden', 'false');
+        targetSlide.setAttribute('tabindex', '0');
+        targetSlide.setAttribute('role', 'option');
+        targetSlide.setAttribute('aria-describedby', `slick-slide0${index}`);
+      }
+      dotLi.classList.add('slick-active');
+      dotLi.setAttribute('aria-hidden', 'false');
+      dotLi.setAttribute('aria-selected', 'true');
+
+      // Simulate slider transform (simplified for this review)
+      // In a real implementation, this would involve calculating the transform based on slide width
+      const slideWidth = block.querySelector('.slick-slide')?.offsetWidth || 0;
+      slickTrack.style.transform = `translate3d(-${index * slideWidth}px, 0px, 0px)`;
+    });
+  });
+  block.append(slickDots);
+
+  // Initialize first slide as active
+  if (slides.length > 0) {
+    const firstSlide = block.querySelector('.slick-slide[data-slick-index="0"]');
+    if (firstSlide) {
+      firstSlide.classList.add('slick-current', 'slick-active');
+      firstSlide.setAttribute('aria-hidden', 'false');
+      firstSlide.setAttribute('tabindex', '0');
+      firstSlide.setAttribute('role', 'option');
+      firstSlide.setAttribute('aria-describedby', 'slick-slide00');
+    }
+    const firstDot = block.querySelector('.slick-dots li[data-slick-index="0"]');
+    if (firstDot) {
+      firstDot.classList.add('slick-active');
+      firstDot.setAttribute('aria-hidden', 'false');
+      firstDot.setAttribute('aria-selected', 'true');
+    }
+    // Add data-slick-index to dots for easier selection
+    block.querySelectorAll('.slick-dots li').forEach((li, i) => li.setAttribute('data-slick-index', i));
+  }
+}
