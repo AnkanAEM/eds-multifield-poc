@@ -3,6 +3,6 @@
     "/content/header-poc/:/"
   ],
   "includes": [
-    "/content/headerpoc/"
+    "/content/header-poc/"
   ]
 }
