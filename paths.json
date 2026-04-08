@@ -1,8 +1,8 @@
 {
   "mappings": [
-    "/content/eds-multifield-poc/:/"
+    "/content/header-poc/:/"
   ],
   "includes": [
-    "/content/eds-multifield-poc/"
+    "/content/headerpoc/"
   ]
 }
