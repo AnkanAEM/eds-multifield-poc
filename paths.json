@@ -1,6 +1,8 @@
 {
   "mappings": [
-    "/content/header-l1/:/"
+    "/content/header-l1/:/",
+    "/content/header-l1/configuration/:/helix/config.json",
+    "/content/header-l1/metadata/:/metadata.json"
   ],
   "includes": [
     "/content/header-l1/"
